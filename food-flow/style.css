@@ -1,0 +1,362 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: #1d1d1f;
+  --panel: #c8cbcd;
+  --brown: #92572e;
+  --orange: #c98b59;
+  --white: #f7f7f7;
+  --muted: #c9c0b9;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--white);
+  font-family: "Poppins", Arial, sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.app {
+  width: min(100%, 1100px);
+  min-height: 650px;
+  position: relative;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  min-height: 650px;
+  animation: appear .25s ease;
+}
+
+.screen.active { display: flex; }
+
+@keyframes appear {
+  from { opacity: .5; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  color: var(--brown);
+  text-decoration: none;
+  font-size: 40px;
+  line-height: .98;
+  font-weight: 800;
+  letter-spacing: -.8px;
+}
+
+.brand-mark {
+  display: block;
+  width: 142px;
+  height: 65px;
+  fill: #050505;
+  margin-bottom: 2px;
+}
+
+.landing {
+  min-height: 650px;
+  background: var(--background);
+}
+
+.hero-photo {
+  flex: 0 0 48%;
+  min-height: 650px;
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48));
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.photo-caption {
+  position: absolute;
+  z-index: 1;
+  left: 48px;
+  bottom: 52px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.landing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 55px;
+  gap: 76px;
+}
+
+.landing-copy {
+  width: min(100%, 400px);
+}
+
+.landing-copy h1 {
+  font-size: clamp(23px, 2.5vw, 31px);
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.landing-copy p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 37px;
+}
+
+.primary-btn {
+  border: 0;
+  border-radius: 11px;
+  background: var(--brown);
+  color: white;
+  font: 700 19px "Poppins", sans-serif;
+  min-width: 205px;
+  padding: 14px 25px;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.primary-btn:hover {
+  background: var(--orange);
+  transform: translateY(-1px);
+}
+
+.landing-copy small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 31px;
+}
+
+/* Login e cadastro */
+.auth-screen {
+  min-height: 530px;
+  background: var(--background);
+}
+
+.auth-intro {
+  flex: 0 0 43%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 105px;
+  padding: 30px 35px;
+}
+
+.auth-intro .brand {
+  font-size: 34px;
+}
+
+.auth-intro .brand-mark {
+  width: 120px;
+  height: 55px;
+}
+
+.auth-intro .intro-copy {
+  width: min(100%, 330px);
+}
+
+.intro-copy h2 {
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.intro-copy p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.auth-stage {
+  flex: 1;
+  background: var(--panel);
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  min-height: 530px;
+}
+
+.auth-card {
+  width: min(100%, 350px);
+  background: #1d1d1f;
+  border-radius: 16px;
+  padding: 36px 32px 27px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.auth-card h1 {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.card-subtitle {
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.auth-card label {
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.auth-card input {
+  width: 100%;
+  height: 39px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: #c8cbcd;
+  color: #222;
+  padding: 0 12px;
+  outline: none;
+  font: italic 11px "Poppins", sans-serif;
+  margin-bottom: 23px;
+}
+
+.auth-card input::placeholder { color: #333; }
+.auth-card input:focus { border-color: var(--orange); }
+
+.forgot-link {
+  align-self: flex-end;
+  color: var(--orange);
+  font-size: 10px;
+  text-decoration: none;
+  margin-top: -13px;
+  margin-bottom: 28px;
+}
+
+.form-btn {
+  align-self: center;
+  min-width: 135px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background: var(--orange);
+  border-radius: 9px;
+}
+
+.switch-text {
+  color: #f1efed;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.switch-text a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-intro { gap: 95px; }
+.signup-card { padding-top: 28px; padding-bottom: 27px; }
+.signup-card .card-subtitle { margin-bottom: 31px; }
+.signup-card input { margin-bottom: 18px; }
+.signup-card .form-btn { margin-top: 8px; }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  pointer-events: none;
+  background: #303033;
+  border: 1px solid #555;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 12px;
+  transition: .25s;
+  z-index: 5;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 760px) {
+  body { padding: 14px; }
+  .app, .screen { min-height: 0; }
+  .landing { flex-direction: column; }
+  .hero-photo { flex: none; min-height: 300px; height: 42vh; }
+  .photo-caption { left: 24px; bottom: 22px; }
+  .landing-content { padding: 38px 25px; gap: 35px; }
+  .landing-copy { text-align: center; }
+  .landing-copy h1 { font-size: 24px; }
+  .landing-copy p { font-size: 13px; }
+  .auth-screen { flex-direction: column; }
+  .auth-intro { flex: none; gap: 20px; padding: 25px 15px; }
+  .auth-intro .brand { transform: scale(.78); }
+  .auth-intro .intro-copy { text-align: center; }
+  .intro-copy h2 { font-size: 17px; }
+  .auth-stage { min-height: 475px; flex: none; padding: 25px 16px; }
+  .auth-card { max-width: 360px; }
+  .desktop-only { display: none; }
+}
+
+@media (max-width: 380px) {
+  .auth-card { padding-left: 23px; padding-right: 23px; }
+  .hero-photo { min-height: 240px; }
+}
+body {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.screen {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 2;
+}
+
+.landing-copy,
+#btn-comecar {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.hero-photo::after {
+  pointer-events: none;
+}
